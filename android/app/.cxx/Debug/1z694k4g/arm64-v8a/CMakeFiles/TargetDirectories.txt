@@ -1,0 +1,2 @@
+F:/Workspace/nfc_reader_flush/android/app/.cxx/Debug/1z694k4g/arm64-v8a/CMakeFiles/edit_cache.dir
+F:/Workspace/nfc_reader_flush/android/app/.cxx/Debug/1z694k4g/arm64-v8a/CMakeFiles/rebuild_cache.dir
