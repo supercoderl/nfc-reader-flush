@@ -6,7 +6,6 @@ import '../util/NetUtils.dart';
 import 'dart:convert';
 import '../constants/Constants.dart';
 import '../widgets/SlideView.dart';
-import '../pages/NewsDetailPage.dart';
 import '../widgets/CommonEndLine.dart';
 
 class NewsListPage extends StatefulWidget {
@@ -231,8 +230,7 @@ class NewsListPageState extends State<NewsListPage> {
     return InkWell(
       child: row,
       onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (ctx) => NewsDetailPage(id: itemData['detailUrl'])));
+
       },
     );
   }

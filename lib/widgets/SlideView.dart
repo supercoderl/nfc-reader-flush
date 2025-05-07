@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../pages/NewsDetailPage.dart';
 
 class SlideView extends StatefulWidget {
   final data;
@@ -53,12 +52,8 @@ class SlideViewState extends State<SlideView>
         var item = slideData[i];
         var imgUrl = item['imgUrl'];
         var title = item['title'];
-        var detailUrl = item['detailUrl'];
         items.add(GestureDetector(
           onTap: () {
-            // 点击跳转到详情
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (ctx) => NewsDetailPage(id: detailUrl)));
           },
           child: Stack(
             children: <Widget>[
