@@ -1,8 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'OfflineActivityPage.dart';
-import 'CommonWebPage.dart';
 import 'package:barcode_scan2/barcode_scan2.dart';
 
 class DiscoveryPage extends StatelessWidget {
@@ -125,46 +123,7 @@ class DiscoveryPage extends StatelessWidget {
   }
 
   void handleListItemClick(BuildContext ctx, ListItem item) {
-    String title = item.title;
-    if (title == "扫一扫") {
-      scan();
-    } else if (title == "线下活动") {
-      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) {
-        return OfflineActivityPage();
-      }));
-    } else if (title == "码云推荐") {
-      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) {
-        return CommonWebPage(
-          title: "码云推荐",
-          url: "https://m.gitee.com/explore",
-          key: ValueKey('web-page-$title'),
-        );
-      }));
-    } else if (title == "代码片段") {
-      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) {
-        return CommonWebPage(
-          title: "代码片段",
-          url: "https://m.gitee.com/gists",
-          key: ValueKey('web-page-$title'),
-        );
-      }));
-    } else if (title == "开源软件") {
-      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) {
-        return CommonWebPage(
-          title: "开源软件",
-          url: "https://m.gitee.com/explore",
-          key: ValueKey('web-page-$title'),
-        );
-      }));
-    } else if (title == "码云封面人物") {
-      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) {
-        return CommonWebPage(
-          title: "码云封面人物",
-          url: "https://m.gitee.com/gitee-stars/",
-          key: ValueKey('web-page-$title'),
-        );
-      }));
-    }
+    
   }
 
   Future scan() async {

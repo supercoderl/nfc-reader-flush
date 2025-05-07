@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../api/Fire.dart';
 import '../util/NetUtils.dart';
-import '../pages/CommonWebPage.dart';
 
 // 线下活动
 class OfflineActivityPage extends StatefulWidget {
@@ -148,13 +147,7 @@ class OfflineActivityPageState extends State<OfflineActivityPage> {
   }
 
   _showDetail(detailUrl) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-      return CommonWebPage(
-        title: '活动详情',
-        url: detailUrl,
-        key: const ValueKey('web-page-活动详情'),
-      );
-    }));
+
   }
 
   @override

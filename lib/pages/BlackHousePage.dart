@@ -7,7 +7,6 @@ import '../util/BlackListUtils.dart';
 import '../util/NetUtils.dart';
 import 'dart:convert';
 import '../pages/LoginPage.dart';
-import '../util/DataUtils.dart';
 import '../util/Utf8Utils.dart';
 
 class BlackHousePage extends StatefulWidget {
@@ -29,70 +28,15 @@ class BlackHousePageState extends State<BlackHousePage> {
   }
 
   queryBlackList() {
-    DataUtils.getUserInfo().then((userInfo) {
-      if (userInfo != null) {
-        String url = Api.QUERY_BLACK;
-        url += "/${userInfo.id}";
-        NetUtils.get(url).then((data) {
-          if (data != null) {
-            var obj = json.decode(data);
-            if (obj['code'] == 0) {
-              setState(() {
-                blackDataList = obj['msg'];
-              });
-            }
-          }
-        });
-      } else {
-        setState(() {
-          isLogin = false;
-        });
-      }
-    });
+   
   }
 
   // 获取用户信息
   getUserInfo() async {
-    SharedPreferences sp = await SharedPreferences.getInstance();
-    Object? accessToken = sp.get(DataUtils.SP_AC_TOKEN);
-    Map<String, String> params = new Map();
-    if (accessToken != null) params['access_token'] = accessToken as String;
-    NetUtils.get(Api.USER_INFO, params: params).then((data) {
-      if (data != null) {
-        var map = json.decode(data);
-        DataUtils.saveUserInfo(map).then((userInfo) {
-          queryBlackList();
-        });
-      }
-    });
   }
 
   // 从黑名单中删除
   deleteFromBlack(authorId) {
-    DataUtils.getUserInfo().then((userInfo) {
-      if (userInfo != null) {
-        String userId = "${userInfo.id}";
-        Map<String, String> params = new Map();
-        params['userid'] = userId;
-        params['authorid'] = "$authorId";
-        NetUtils.get(Api.DELETE_BLACK, params: params).then((data) {
-          Navigator.of(context).pop();
-          if (data != null) {
-            var obj = json.decode(data);
-            if (obj['code'] == 0) {
-              // 删除成功
-              BlackListUtils.removeBlackId(authorId);
-              queryBlackList();
-            } else {
-              showResultDialog("操作失败：${obj['msg']}");
-            }
-          }
-        }).catchError((e) {
-          Navigator.of(context).pop();
-          showResultDialog("网络请求失败：$e");
-        });
-      }
-    });
   }
 
   showResultDialog(String msg) {

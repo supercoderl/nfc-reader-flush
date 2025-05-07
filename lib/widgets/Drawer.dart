@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import '../pages/AboutPage.dart';
+import '../pages/AddCardPage.dart';
 import '../pages/BlackHousePage.dart';
-import '../pages/PublishTweetPage.dart';
-import '../pages/SettingsPage.dart';
 
 class Drawer extends StatelessWidget {
   static const double IMAGE_ICON_WIDTH = 30.0;
@@ -92,10 +90,6 @@ class Drawer extends StatelessWidget {
       onTap: () {
         switch (index) {
           case 0:
-            // 发布动弹
-            Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-              return PublishTweetPage();
-            }));
             break;
           case 1:
             // 小黑屋
@@ -106,14 +100,10 @@ class Drawer extends StatelessWidget {
           case 2:
             // 关于
             Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-              return AboutPage();
+              return AddCardPage();
             }));
             break;
           case 3:
-            // 设置
-            Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-              return SettingsPage();
-            }));
             break;
         }
       },

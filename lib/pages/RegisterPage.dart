@@ -33,10 +33,19 @@ class _RegisterPageState extends State<RegisterPage> {
       return;
     }
 
-    Object? data =
-        await register(_emailController.text, _passwordController.text);
+    Object? data = await register(
+      _emailController.text,
+      _passwordController.text,
+      _firstNameController.text,
+      _lastNameController.text,
+      _dobController.text,
+      _selectedCountryCode + _phoneController.text,
+    );
     if (data != null) {
       if (!mounted) return;
+
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Register successfully!')));
 
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => const LoginPage()));
@@ -46,12 +55,12 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   void initState() {
     super.initState();
-    _firstNameController.text = 'Lois';
-    _lastNameController.text = 'Becket';
-    _emailController.text = 'Loisbecket@gmail.com';
+    _firstNameController.text = '';
+    _lastNameController.text = '';
+    _emailController.text = '';
     _dobController.text = '18/03/2024';
-    _phoneController.text = '(454) 726-0592';
-    _passwordController.text = '••••••••';
+    _phoneController.text = '';
+    _passwordController.text = '';
   }
 
   @override
@@ -242,9 +251,14 @@ class _RegisterPageState extends State<RegisterPage> {
                                     value: _selectedCountryCode,
                                     underline: const SizedBox(),
                                     icon: const Icon(Icons.keyboard_arrow_down),
-                                    items: <String>['+1', '+44', '+91', '+61']
-                                        .map<DropdownMenuItem<String>>(
-                                            (String value) {
+                                    items: <String>[
+                                      '+1',
+                                      '+44',
+                                      '+91',
+                                      '+61',
+                                      '+84'
+                                    ].map<DropdownMenuItem<String>>(
+                                        (String value) {
                                       return DropdownMenuItem<String>(
                                         value: value,
                                         child: Text(value),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nfc_reader_flush/api/modules/user.dart';
 import 'package:nfc_reader_flush/enum/index.dart';
-import 'package:nfc_reader_flush/pages/AboutPage.dart';
+import 'package:nfc_reader_flush/pages/MainPage.dart';
 import 'package:nfc_reader_flush/pages/RegisterPage.dart';
 import 'package:nfc_reader_flush/util/StorageUtils.dart';
 import 'package:nfc_reader_flush/util/ToastUtils.dart';
@@ -18,6 +18,7 @@ class _LoginPageState extends State<LoginPage> {
   final _passwordController = TextEditingController();
 
   void onLoginPressed() async {
+    print("Login button pressed");
     if (_emailController.text.isEmpty || _passwordController.text.isEmpty) {
       ToastUtils.showAppToast("Please input your information!", ToastType.info);
       return;
@@ -31,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
 
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const AboutPage()),
+        MaterialPageRoute(builder: (context) => const MainPage()),
       );
     }
   }
